@@ -2,7 +2,7 @@
 
 Sketchbook is a tool that helps create art with code.
 
-[sketckbook_demo_2.webm](https://github.com/user-attachments/assets/9c06a44d-2029-4a47-b48b-fa60632f635b)
+[sketchbook_demo_2.webm](https://github.com/user-attachments/assets/9c06a44d-2029-4a47-b48b-fa60632f635b)
 
 ## Creative process
 
