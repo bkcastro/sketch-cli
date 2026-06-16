@@ -2,6 +2,8 @@
 
 Sketchbook is a tool that helps create art with code.
 
+[sketchbook_demo_2.webm](https://github.com/user-attachments/assets/ce05dadb-9a61-4e3d-9f10-44bcfe700138)
+
 ## Creative process
 
 What is a creative process? An iterative process of generating ideas, developing them, and brining them to life. 
