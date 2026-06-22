@@ -29,13 +29,13 @@ My_Sketchbook/
     ...
 ```
 
-### How to use the process
+## Getting started
 
-First create a folder where your sketchbook will live. You can name it anything you want. Then `cd` to that directory.
+Run the command `sketch init` to make your first sketchbook. Then `cd` to the folder created to get started.
 
-#### Making a new sketch
+#### Making your first sketch
 
-Once's you have an idea for a sketch just run the command `sketch -n`. The command will create a folder called **0001** and a child folder called **sketch**. The **sketch** folder will be populated with basic files needed to render a blank html page. The idea is that all the files needed to render your sketch will live inside this folder. 
+Once's you have an idea for a sketch just run the command `sketch new` to create one. Two folders will be created `0001` and `0001/sketch`. The `0001/sketch` folder will be populated with basic files needed to render a blank html page. Folder `0001/sketch` holds the source files needed to render your sketch and folder `0001` is there to store the `sketch` folder and future iterations (more on this down below).
 
 ```
 My_Sketchbook/
@@ -46,17 +46,15 @@ My_Sketchbook/
             style.css
 ```
 
-Notice how 0001 is created along with a child folder called sketch.
+Use any text editor and start hacking away.
 
-Then you can use any text editor and start hacking away.
-
-To see your sketches run `sketch -s` in the root directory of your sketchbook. The command will spin up a server allowing you to see and open your sketches. To learn more reference the server section down below.
+To see your sketches run the command `sketch server` in the root directory of your sketchbook. To learn more reference the server section down below.
 
 #### Iterate
 
-The power of this creative process is the ability to iterate on ideas. At any point when you want to explore another idea use this command `sketch -i` which will create an exact copy. Make sure you are in the directory of the sketch you want to iterate. For example to iterate on 0001/ `cd` to 0001/ and run the command. 
+The power of this creative process is the ability to iterate on ideas. At any point when you want to explore another idea use this command `sketch iterate`, an exact copy of the current sketch will be created. Make sure you are in the directory of the sketch you want to iterate. For example to iterate on `0001` `cd` to `0001/` and run the command. 
 
-Don't `cd` to 0001/sketch/ and run the command, folders named **sketch*** are treated as leaf nodes and are not scanned by the display server. 
+Don't `cd` to `0001/sketch/`, folders named **sketch*** cannot hold iterations.
 
 ```
 My_Sketchbook/
@@ -73,13 +71,11 @@ Don't hold back on making iterations! It is best if you just capture the essence
 
 ## Sketch
 
-So what even is a sketch? 
-
-A sketch is just a simple idea that can be rendered on a bowser. It is up to the user to defined what they wish to represent.
+A sketch is a simple idea that can be rendered on a bowser. It is up to the user to defined what they wish to represent.
 
 ## Server
 
-Sketchbook has a built in custom file server. This tool is handy when trying to come up with new ideas. To obtain a holistic view, open up different sketches and move them around the computer screen (assuming a display manger is being used). Then sit back and channel the creative forces.
+Sketchbook has a built-in custom file server. This tool is handy when trying to come up with new ideas. To obtain a holistic view, open up different sketches and move them around the computer screen (assuming a display manger is being used). Then sit back and channel the creative forces.
 
 There are two modes available.
 
@@ -89,7 +85,7 @@ Reference mode uses a tree to represent a sketchbook.
 
 ### Display 
 
-Display mode uses the thumbnail image found inside the folder's named `sketch` **if it exists**. It is up to the user to take a screenshot of their sketch and place it in the sketch directory and name it `thumbnail.webp`. 
+Display mode uses the thumbnail image found inside the folder's named `sketch` **if it exists**. It is up to the user to capture their sketch and place it in the directory and name it `thumbnail.webp`. 
 
 ```
 My_Sketchbook/
@@ -104,4 +100,3 @@ My_Sketchbook/
     0002/
     ...
 ```
-
