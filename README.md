@@ -1,6 +1,6 @@
-# Sketchbook
+# Sketch
 
-Sketchbook is a tool that helps create art with code.
+Sketch is a CLI tool that helps create art with code.
 
 [sketchbook_demo_2.webm](https://github.com/user-attachments/assets/ce05dadb-9a61-4e3d-9f10-44bcfe700138)
 
@@ -8,7 +8,7 @@ Sketchbook is a tool that helps create art with code.
 
 What is a creative process? An iterative process which generates ideas, develops them, and brings them to life. 
 
-Sketchbook makes use of a process called [ZettelKasten](https://en.wikipedia.org/wiki/Zettelkasten) invented by [Nkilas Luhman](https://en.wikipedia.org/wiki/Niklas_Luhmann). But instead of taking notes we create **sketches**. 
+Sketch makes use of a process called [ZettelKasten](https://en.wikipedia.org/wiki/Zettelkasten) invented by [Nkilas Luhman](https://en.wikipedia.org/wiki/Niklas_Luhmann). But instead of taking notes we create **sketches**. 
 
 A simple sketchbook will look like this:
 
