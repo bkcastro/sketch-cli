@@ -75,7 +75,7 @@ A sketch is a simple idea that can be rendered on a bowser. It is up to the user
 
 ## Server
 
-Sketchbook has a built-in custom file server. This tool is handy when trying to come up with new ideas. To obtain a holistic view, open up different sketches and move them around the computer screen. Then sit back and channel the creative forces.
+Sketch has a built-in custom file server. This tool is handy when trying to come up with new ideas. To obtain a holistic view, open up different sketches and move them around the computer screen. Then sit back and channel the creative forces.
 
 There are two modes available.
 

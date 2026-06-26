@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import url from 'url';
 import chalk from 'chalk'
+import figlet from 'figlet';
 
 const ROOT_DIR = '.';
 const PORT = 3000;
@@ -29,6 +30,7 @@ const mimeType = {
 let tree_data;
 let display_data;
 var total_sketches = 0;
+var title = figlet.textSync('Sketchbook', { horizontalLayout: 'full' });
 
 function isNumberedFolder(name) {
 	return /^\d+/.test(name);
@@ -122,6 +124,7 @@ const server = http.createServer((req, res) => {
 		getData();
 
 		const html = render(path.join(__dirname, 'reference.html'), {
+			title: title,
 			tree: tree_data, 
 			sketches: total_sketches
 		});
