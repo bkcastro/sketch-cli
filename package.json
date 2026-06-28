@@ -1,8 +1,11 @@
 {
-  "name": "sketch",
+  "name": "sketch-cli",
   "version": "0.0.1",
   "description": "Sketch is a tool that helps create art with code.",
-  "main": "index.js",
+  "main": "./index.js",
+  "bin": {
+    "sketch": "./index.js"
+  },
   "type": "module",
   "directories": {
     "doc": "docs",

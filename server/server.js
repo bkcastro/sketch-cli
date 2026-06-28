@@ -4,9 +4,10 @@ import path from 'path';
 import url from 'url';
 import chalk from 'chalk'
 import figlet from 'figlet';
+import { validSketchbook } from '../lib/files.js';
 
 const ROOT_DIR = '.';
-const PORT = 3000;
+const PORT = 8000;
 const __dirname = import.meta.dirname; 
 
 const mimeType = {
@@ -114,8 +115,6 @@ function render(file, data) {
 	    return html;
 }
 
-
-
 const server = http.createServer((req, res) => {
 
 	console.log(`${req.method} ${req.url}`);
@@ -198,12 +197,23 @@ const server = http.createServer((req, res) => {
 });
 
 
-
+/**
+ * Start the server if the directory is a valid sketchbook.
+ *
+ * @return {void}
+ */
 export default function start_server() {
+    
+    if (validSketchbook()) {
 
-	server.listen(PORT, () => {
-		console.log(
-			chalk.yellow('Server running on http://localhost:') + chalk.green(PORT)
-		);
-	});
+        server.listen(PORT, () => {
+            console.log(
+                chalk.yellow('Server running on http://localhost:') + chalk.green(PORT)
+            );
+        });
+
+    } else {
+        console.log(chalk.red('Not a valid sketchbook directory.'));
+    }
 }
+
