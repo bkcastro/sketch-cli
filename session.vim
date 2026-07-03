@@ -12,12 +12,14 @@ let s:shortmess_save = &shortmess
 set shortmess+=aoO
 badd +20 release.md
 badd +1 lib/cli.js
-badd +24 lib/options.js
+badd +23 lib/options.js
 badd +50 lib/log.js
 badd +59 lib/commands.js
 badd +1 test
-badd +35 test/commands.js
-badd +0 lib/files.js
+badd +54 test/commands.js
+badd +121 lib/files.js
+badd +28 ./templates/templates.js
+badd +5 test/index.js
 argglobal
 %argdel
 $argadd release.md
@@ -34,10 +36,7 @@ vsplit
 wincmd w
 wincmd _ | wincmd |
 split
-wincmd _ | wincmd |
-split
-2wincmd k
-wincmd w
+1wincmd k
 wincmd w
 let &splitbelow = s:save_splitbelow
 let &splitright = s:save_splitright
@@ -49,12 +48,10 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 exe 'vert 1resize ' . ((&columns * 124 + 124) / 248)
-exe '2resize ' . ((&lines * 20 + 30) / 61)
+exe '2resize ' . ((&lines * 29 + 30) / 61)
 exe 'vert 2resize ' . ((&columns * 123 + 124) / 248)
-exe '3resize ' . ((&lines * 18 + 30) / 61)
+exe '3resize ' . ((&lines * 28 + 30) / 61)
 exe 'vert 3resize ' . ((&columns * 123 + 124) / 248)
-exe '4resize ' . ((&lines * 18 + 30) / 61)
-exe 'vert 4resize ' . ((&columns * 123 + 124) / 248)
 argglobal
 balt release.md
 setlocal foldmethod=manual
@@ -67,33 +64,12 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 16 - ((15 * winheight(0) + 29) / 58)
+let s:l = 30 - ((29 * winheight(0) + 29) / 58)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 16
-normal! 04|
-wincmd w
-argglobal
-enew | setl bt=help
-help :mksession@en
-balt lib/commands.js
-setlocal foldmethod=manual
-setlocal foldexpr=0
-setlocal foldmarker={{{,}}}
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal nofoldenable
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 805 - ((9 * winheight(0) + 10) / 20)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 805
-normal! 064|
+keepjumps 30
+normal! 05|
 wincmd w
 argglobal
 if bufexists(fnamemodify("lib/commands.js", ":p")) | buffer lib/commands.js | else | edit lib/commands.js | endif
@@ -111,11 +87,11 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 49 - ((17 * winheight(0) + 9) / 18)
+let s:l = 55 - ((28 * winheight(0) + 14) / 29)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 49
+keepjumps 55
 normal! 0
 wincmd w
 argglobal
@@ -134,20 +110,18 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 24 - ((15 * winheight(0) + 9) / 18)
+let s:l = 21 - ((13 * winheight(0) + 14) / 28)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 24
-normal! 010|
+keepjumps 21
+normal! 014|
 wincmd w
 exe 'vert 1resize ' . ((&columns * 124 + 124) / 248)
-exe '2resize ' . ((&lines * 20 + 30) / 61)
+exe '2resize ' . ((&lines * 29 + 30) / 61)
 exe 'vert 2resize ' . ((&columns * 123 + 124) / 248)
-exe '3resize ' . ((&lines * 18 + 30) / 61)
+exe '3resize ' . ((&lines * 28 + 30) / 61)
 exe 'vert 3resize ' . ((&columns * 123 + 124) / 248)
-exe '4resize ' . ((&lines * 18 + 30) / 61)
-exe 'vert 4resize ' . ((&columns * 123 + 124) / 248)
 tabnext
 edit test/commands.js
 let s:save_splitbelow = &splitbelow
@@ -155,7 +129,18 @@ let s:save_splitright = &splitright
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
-1wincmd h
+wincmd _ | wincmd |
+vsplit
+2wincmd h
+wincmd w
+wincmd _ | wincmd |
+split
+1wincmd k
+wincmd w
+wincmd w
+wincmd _ | wincmd |
+split
+1wincmd k
 wincmd w
 let &splitbelow = s:save_splitbelow
 let &splitright = s:save_splitright
@@ -166,8 +151,15 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 124 + 124) / 248)
-exe 'vert 2resize ' . ((&columns * 123 + 124) / 248)
+exe 'vert 1resize ' . ((&columns * 81 + 124) / 248)
+exe '2resize ' . ((&lines * 29 + 30) / 61)
+exe 'vert 2resize ' . ((&columns * 91 + 124) / 248)
+exe '3resize ' . ((&lines * 28 + 30) / 61)
+exe 'vert 3resize ' . ((&columns * 91 + 124) / 248)
+exe '4resize ' . ((&lines * 29 + 30) / 61)
+exe 'vert 4resize ' . ((&columns * 74 + 124) / 248)
+exe '5resize ' . ((&lines * 28 + 30) / 61)
+exe 'vert 5resize ' . ((&columns * 74 + 124) / 248)
 argglobal
 balt lib/commands.js
 setlocal foldmethod=manual
@@ -180,19 +172,42 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 56 - ((55 * winheight(0) + 29) / 58)
+let s:l = 114 - ((49 * winheight(0) + 29) / 58)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 56
+keepjumps 114
 normal! 03|
+wincmd w
+argglobal
+if bufexists(fnamemodify("test/commands.js", ":p")) | buffer test/commands.js | else | edit test/commands.js | endif
+if &buftype ==# 'terminal'
+  silent file test/commands.js
+endif
+balt lib/files.js
+setlocal foldmethod=manual
+setlocal foldexpr=0
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldenable
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 7 - ((6 * winheight(0) + 14) / 29)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 7
+normal! 0
 wincmd w
 argglobal
 if bufexists(fnamemodify("lib/files.js", ":p")) | buffer lib/files.js | else | edit lib/files.js | endif
 if &buftype ==# 'terminal'
   silent file lib/files.js
 endif
-balt lib/commands.js
+balt test/commands.js
 setlocal foldmethod=manual
 setlocal foldexpr=0
 setlocal foldmarker={{{,}}}
@@ -203,15 +218,68 @@ setlocal foldnestmax=20
 setlocal foldenable
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 48 - ((42 * winheight(0) + 29) / 58)
+let s:l = 103 - ((11 * winheight(0) + 14) / 28)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 48
-normal! 053|
+keepjumps 103
+normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 124 + 124) / 248)
-exe 'vert 2resize ' . ((&columns * 123 + 124) / 248)
+argglobal
+if bufexists(fnamemodify("./templates/templates.js", ":p")) | buffer ./templates/templates.js | else | edit ./templates/templates.js | endif
+if &buftype ==# 'terminal'
+  silent file ./templates/templates.js
+endif
+balt lib/files.js
+setlocal foldmethod=manual
+setlocal foldexpr=0
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldenable
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 29 - ((8 * winheight(0) + 14) / 29)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 29
+normal! 0
+wincmd w
+argglobal
+if bufexists(fnamemodify("lib/options.js", ":p")) | buffer lib/options.js | else | edit lib/options.js | endif
+if &buftype ==# 'terminal'
+  silent file lib/options.js
+endif
+balt ./templates/templates.js
+setlocal foldmethod=manual
+setlocal foldexpr=0
+setlocal foldmarker={{{,}}}
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldenable
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 14) / 28)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 046|
+wincmd w
+exe 'vert 1resize ' . ((&columns * 81 + 124) / 248)
+exe '2resize ' . ((&lines * 29 + 30) / 61)
+exe 'vert 2resize ' . ((&columns * 91 + 124) / 248)
+exe '3resize ' . ((&lines * 28 + 30) / 61)
+exe 'vert 3resize ' . ((&columns * 91 + 124) / 248)
+exe '4resize ' . ((&lines * 29 + 30) / 61)
+exe 'vert 4resize ' . ((&columns * 74 + 124) / 248)
+exe '5resize ' . ((&lines * 28 + 30) / 61)
+exe 'vert 5resize ' . ((&columns * 74 + 124) / 248)
 tabnext 2
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'

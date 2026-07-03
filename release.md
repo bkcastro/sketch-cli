@@ -1,4 +1,4 @@
-
+# Document to track release updates
 
 ## June 2026 Version: 0.0.1
 
@@ -18,11 +18,17 @@
 ## July 2026 Version: 0.0.2
 
 + [ ] Unit test for core commands.
-    + [ ] Who.
-+ [ ] Input and output flags.
-+ [ ] Create templates: 
-    1. 3D.
-    2. 2D_Camera.
-    3. 3D_Camera.
-    4. WebXR.
-+ [ ] HTTPS support.
+    + [x] Who.
+    + [ ] Init.
+    + [ ] Sketch.
+    + [ ] Serve.
++ [ ] New templates: 
+    + [ ] 3D.
+    + [ ] 2D_Camera.
+    + [ ] 3D_Camera.
+    + [ ] WebXR.
++ [ ] Refactor server code.
+    + [ ] HTTPS support.
+    + [ ] Improve UI.
++ [ ] Remove figlet.
++ [ ] Update README with new display server feature.

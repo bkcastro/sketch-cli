@@ -2,8 +2,6 @@ import path from 'path';
 
 const templates = {
     'default': './default',
-    '2D': './2D',
-    '2D_framed': './2D_framed',
 }
 
 /**
@@ -18,6 +16,16 @@ export function getTemplateURL(template) {
     const template_directory = templates[template]; 
 
     return path.join(project_directory, template_directory);
+}
+
+/**
+ * Return true if templates exists.
+ *
+ * @param {string} template
+ * @return {boolean}
+ */
+export function validTemplate(template) {
+    return Object.hasOwn(templates, template);
 }
 
 /**
