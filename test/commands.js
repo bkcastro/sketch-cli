@@ -1,32 +1,31 @@
-import { test, before, after } from 'node:test';
+import { beforeEach, afterEach, before, after, describe, it} from 'node:test';
 import fs from 'fs';
 import { join } from 'path';
 import assert from 'node:assert/strict';
 import Log from '../lib/log.js';
-import { getValidSketchAndIterationDirectories, listValidSketchDirectories, createName, validSketchbook, initialUser, jsonToString, getUser } from '../lib/files.js';
+import { createSketch, newSketch, getValidSketchAndIterationDirectories, listValidSketchDirectories, createName, validSketchbook, initialUser, jsonToString, getUser } from '../lib/files.js';
 
-test('Who:', async (t) => { 
+describe('Who:', async (t) => { 
     
-    let testDir;
+    let testDir = './test_who';
 
     before(() => {
-    
-        fs.mkdirSync('./test_who'); 
-        testDir = './test_who';
+
+        fs.mkdirSync(testDir); 
     }); 
 
     after(() => {
 
-        fs.rmSync('./test_who', { recursive: true });
+        fs.rmSync(testDir, { recursive: true });
     });
 
-    await t.test('Invalid folder.', async () => {
+    await it('Invalid folder.', async () => {
 
         const res = validSketchbook(testDir); 
         assert.equal(res, false);
     });
 
-    await t.test('Valid folder.', { todo: false }, async  () => {
+    await it('Valid folder.', { todo: false }, async  () => {
         
         const userData = initialUser('Brandon Castro');
         const userDataString = jsonToString(userData);
@@ -44,29 +43,29 @@ test('Who:', async (t) => {
 
 });
 
-test('Init: ', { todo: true }, async (t) => {
+describe('Init: ', { todo: true }, async () => {
 
-    await t.test('Invalid folder.', async () => {});
+    await it('Invalid folder.', async () => {});
 
-    await t.test('Valid folder.', { todo: false }, async  () => {});
+    await it('Valid folder.', { todo: false }, async  () => {});
 
 });
 
-test('Sketch: ', { todo: false }, async (t) => {
+describe('Sketch: ', { todo: false }, async (t) => {
 
-    const test_dir = './test_sketch';
+    const testDir = './test_sketch';
 
-    before(() => {
+    beforeEach(() => {
 
-        fs.mkdirSync(test_dir);
+        fs.mkdirSync(testDir);
     });
 
-    after(() => {
+    afterEach(() => {
 
-        fs.rmSync(test_dir, { recursive: true });
+        fs.rmSync(testDir, { recursive: true });
     });
 
-    await t.test('Create valid sketch names.', () => {
+    await it('Create valid sketch names.', () => {
 
         const nums = [1,2,3,4,5,6,7,8,9,10];
         const answer = [
@@ -90,25 +89,59 @@ test('Sketch: ', { todo: false }, async (t) => {
 
     });
 
-    await t.test('List valid sketch directories.', () => {
+    const directories = [
+        '0001',
+        '0002',
+        '0003'
+    ];
 
-        const directories = [
-            '0001',
-            '0002',
-            '0003'
-        ];
+    await it('List valid sketch directories should be empty.', () => {
 
-        before(() => {
-            directories.forEach((dir) => fs.mkdirSync(path.join(test_dir, dir)));
-        });
+
+        const items = listValidSketchDirectories(testDir);
         
-        after(() => {
-              directories.forEach((dir) => fs.rmSync(path.join(test_dir, dir)));
-        });
-        
-        const items = listValidSketchDirectories(test_dir);
-        
-        assert.deepStrictEqual(items, directories);
+        assert.deepStrictEqual(items, []);
 
     });
+
+    await it('List valid sketch directories should match directories array.', () => {
+
+        directories.forEach((dir) => fs.mkdirSync(join(testDir, dir)));
+
+        const items = listValidSketchDirectories(testDir);
+
+        assert.deepStrictEqual(items, directories)
+    });
+
+    await it ('Function createSketch should create a valid sketch folder.', () => {
+
+        const sourceDir = join(testDir, './sketch');
+        const sketchDir = join(testDir, './0002/sketch');
+
+        fs.mkdirSync(sourceDir, { recursive: true });
+
+        createSketch(sketchDir, sourceDir); 
+        
+        const fileExist = fs.existsSync(sketchDir);
+
+        assert.ok(fileExist, true); 
+    });
+
+    await it ('Function createSketch should copy source sketch directory.', () => {
+
+        const sourceDir = join(testDir, './0001/sketch/');
+        const sourceItem = join(testDir, './0001/sketch/hi');
+        const sketchDir = join(testDir,'./0002/sketch');
+
+        fs.mkdirSync(sourceDir, { recursive: true });
+        fs.mkdirSync(sourceItem);
+
+        createSketch(sketchDir, sourceDir); 
+
+        const items = fs.readdirSync(sketchDir);
+        const sourceItems = fs.readdirSync(sourceDir);
+
+        assert.deepStrictEqual(items, sourceItems); 
+    });
+
 });

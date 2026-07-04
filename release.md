@@ -18,7 +18,7 @@
 ## July 2026 Version: 0.0.2
 
 + [ ] Unit test for core commands.
-    + [x] Who.
+    :close
     + [ ] Init.
     + [ ] Sketch.
     + [ ] Serve.
