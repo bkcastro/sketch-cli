@@ -1,5 +1,5 @@
 {
-  "name": "sketch-cli",
+  "name": "@_lunch/sketch-cli",
   "version": "0.0.2",
   "description": "sketch-cli is a tool that helps create art with code.",
   "main": "./index.js",
