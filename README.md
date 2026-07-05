@@ -1,6 +1,6 @@
 # sketch-cli
 
-A cli project-manager that helps create art with JavaScript.
+A cli scaffolding tool that helps create art with code. 
 
 ## What is a sketch? 
 
