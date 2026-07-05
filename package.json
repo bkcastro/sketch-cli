@@ -1,7 +1,7 @@
 {
   "name": "sketch-cli",
   "version": "0.0.2",
-  "description": "Sketch is a tool that helps create art with code.",
+  "description": "sketch-cli is a tool that helps create art with code.",
   "main": "./index.js",
   "bin": {
     "sketch": "./index.js"
@@ -16,15 +16,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bkcastro/Sketch.git"
+    "url": "git+https://github.com/bkcastro/sketch-cli.git"
   },
   "keywords": [],
   "author": "Brandon Castro",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/bkcastro/Sketch/issues"
+    "url": "https://github.com/bkcastro/sketch-cli/issues"
   },
-  "homepage": "https://github.com/bkcastro/Sketch#readme",
+  "homepage": "https://github.com/bkcastro/sketch-cli#readme",
   "dependencies": {
     "chalk": "^5.6.2",
     "clear": "^0.1.0",
