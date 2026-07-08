@@ -7,7 +7,7 @@ import { createSketch, newSketch, getValidSketchAndIterationDirectories, listVal
 
 describe('Who:', async (t) => { 
     
-    let testDir = './test_who';
+    const testDir = './test_who';
 
     before(() => {
 
@@ -45,9 +45,38 @@ describe('Who:', async (t) => {
 
 describe('Init: ', { todo: true }, async () => {
 
-    await it('Invalid folder.', async () => {});
+    const testDir = './test_init';
 
-    await it('Valid folder.', { todo: false }, async  () => {});
+    before(() => {
+
+        fs.mkdirSync(testDir); 
+    }); 
+
+    after(() => {
+
+        fs.rmSync(testDir, { recursive: true });
+    });
+
+    await it('Valid folder', { todo: false }, async  () => {
+        
+        fs.mkdirSync(join(testDir, '.sketchbook'));
+        fs.writeFileSync(join(testDir, '.sketchbook/meta-data.json'), '');
+
+        const res = validSketchbook(testDir);
+
+        assert.ok(res);
+
+    });
+
+    await it('Invalid folder', async () => {
+        
+        fs.rmSync(join(testDir, '.sketchbook'), { recursive: true });
+
+        const res = validSketchbook(testDir);
+
+        assert.ok(res == false);
+
+    });
 
 });
 

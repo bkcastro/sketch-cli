@@ -18,7 +18,7 @@
 ## July 2026 Version: 0.0.2
 
 + [ ] Unit test for core commands.
-    + [ ] Init.
+    + [x] Init.
     + [ ] Sketch.
     + [ ] Serve.
 + [ ] New templates: 
@@ -32,3 +32,4 @@
     + [ ] Improve UI.
 + [ ] Remove figlet.
 + [ ] Update README with new display server feature.
++ [ ] Add the feature of being able to pick which sketch to iterate on like so: `sketch -i 0002`.
