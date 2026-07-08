@@ -1,0 +1,33 @@
+body {
+	font-family: Arial, sans-serif;
+        font-size: small;
+        background-color: #575757;
+        color: #333;
+        margin: 0; 
+        padding: 0;
+        height: 100vh;
+}
+
+
+canvas {
+        top: 0;
+	left: 0;
+        position: absolute;
+        z-index: 2;
+        height: 100%;
+        width: 100%;
+        background-color: #f0f0f0;
+        border: 20px solid #333;
+        box-sizing: border-box;
+}
+
+
+p {
+         position: absolute;
+         z-index: 10;
+         top: 100px; 
+         left: 30px;
+         color: #ffffff;
+	 background-color: #111111;  
+}
+

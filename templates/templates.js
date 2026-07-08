@@ -1,7 +1,22 @@
 import path from 'path';
 
 const templates = {
-    'default': './default',
+    'default': {
+        src: './default',
+        description: 'Blank canvas.'
+    },
+    '3D': {
+        src: './3D',
+        description: 'Basic three.js scene.'
+    }, 
+    '2D_Camera': {
+        src: './2D_Camera',
+        description: 'Canvas with video camera background.'
+    },
+    '2D_Hand_Tracking': {
+        src: './2D_Hand_Tracking',
+        description: 'Canvas with video camera background and hand tracking support.'
+    },
 }
 
 /**
@@ -13,7 +28,7 @@ const templates = {
 export function getTemplateURL(template) {
     
     const project_directory = import.meta.dirname;
-    const template_directory = templates[template]; 
+    const template_directory = templates[template].src; 
 
     return path.join(project_directory, template_directory);
 }
@@ -34,6 +49,12 @@ export function validTemplate(template) {
  * @return {string}
  */
 export function getListOfTemplates() {
+    
+    var list = 'Templates 🛠️:\n';
+    
+    for (const key of Object.keys(templates)) {
+        list += key + ': ' + templates[key].description + '\n';
+    }
 
-    return Object.keys(templates).join(', '); 
+    return list;
 }

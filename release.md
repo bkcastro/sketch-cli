@@ -17,16 +17,16 @@
 
 ## July 2026 Version: 0.0.2
 
-+ [ ] Unit test for core commands.
++ Unit test for core commands.
     + [x] Init.
     + [ ] Sketch.
     + [ ] Serve.
-+ [ ] New templates: 
-    + [ ] 3D.
-    + [ ] 2D_Camera.
-    + [ ] 3D_Camera.
++ New templates: 
+    + [x] 3D.
+    + [x] 2D_Camera.
+    + [x] 2D_Hand_Tracking.
     + [ ] WebXR.
-+ [ ] Add descriptions to templates.
++ [x] Add descriptions to templates.
 + [ ] Refactor server code.
     + [ ] HTTPS support.
     + [ ] Improve UI.
