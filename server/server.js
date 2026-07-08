@@ -33,7 +33,6 @@ const mimeType = {
 let tree_data;
 let display_data;
 var total_sketches = 0;
-var title = figlet.textSync('Sketchbook', { horizontalLayout: 'full' });
 
 function isNumberedFolder(name) {
 	return /^\d+/.test(name);
@@ -41,6 +40,9 @@ function isNumberedFolder(name) {
 
 
 function renderTree(relPath = '') {
+       
+        if (relPath == '') total_sketches = 0;
+
 		const fullPath = path.join(ROOT_DIR, relPath);
 
 		const entries = fs.readdirSync(fullPath, { withFileTypes: true })
@@ -66,6 +68,8 @@ function renderTree(relPath = '') {
 }
 
 function renderDisplay(relPath = '') {
+
+        if (relPath == '') total_sketches = 0;
 
 		const fullPath = path.join(ROOT_DIR, relPath);
 		var res = '';	
@@ -95,18 +99,6 @@ function renderDisplay(relPath = '') {
 		return res;
 }
 
-/**
- * Fetch the data for the server.
- *
- * @return {void}
- */
-function getData() {
-	total_sketches = 0;
-
-	tree_data = renderTree();
-	display_data = renderDisplay();
-}
-
 function render(file, data) {
 	    let html = fs.readFileSync(file, 'utf-8');
 
@@ -119,18 +111,17 @@ function render(file, data) {
 
 const server = http.createServer((req, res) => {
 
-	console.log(`${req.method} ${req.url}`);
+	Log.text(`${req.method} ${req.url}`);
 
 	if (req.url == '/' && req.method == 'GET') {
 		
 		res.writeHead(200, {
 			'Content-Type': 'text/html'
 		});
-
-		getData();
+        
+	    const tree_data = renderTree();
 
 		const html = render(path.join(__dirname, 'reference.html'), {
-			title: title,
 			tree: tree_data, 
 			sketches: total_sketches
 		});
@@ -145,6 +136,8 @@ const server = http.createServer((req, res) => {
 		res.writeHead(200, {
 			'Content-Type': 'text/html'
 		});
+
+	    const display_data = renderDisplay();
 
 		const html = render(path.join(__dirname, 'display.html'), {
 			sketches: total_sketches,
@@ -200,7 +193,7 @@ const server = http.createServer((req, res) => {
 
 
 /**
- * Start the server if the directory is a valid sketchbook.
+ * Start the server.
  *
  * @return {void}
  */
