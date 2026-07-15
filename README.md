@@ -12,7 +12,7 @@ Create a new directory, `cd` into it then run the command `sketch init` to initi
 
 A **sketchbook** is just a directory that holds sketches.
 
-A sketchbook with a couple sketches will look like this:
+A simple sketchbook with will look like this:
 
 ```
 My_Sketchbook/
@@ -33,7 +33,7 @@ My_Sketchbook/
 
 ### First sketch
 
-The command `sketch` creates two folders `0001/` and `0001/sketch/`. Folder `0001/sketch/` contains all the files needed to render a sketch, the default is just a blank web page.
+The command `sketch` to create your first sketch. Two folders are created `0001/` and `0001/sketch/`. Folder `0001/sketch/` contains all the files needed to render a sketch, the default is just a blank web page. And folder `0001/` is used to contain future iterations.
 
 ```
 My_Sketchbook/
@@ -50,7 +50,7 @@ Note: All files and resources should be kept inside the `sketch/` folder.
 
 ### Iterate
 
-The flag `--iterate` or `-i` for short is used to iterate on the most recent sketch.
+The flag `--iterate` or `-i` for short is used to iterate on the most recent sketch by default.
 
 Running the command `sketch -i` produces this output:
 
@@ -76,13 +76,13 @@ My_Sketchbook/
                 ...
 ```
 
-This method allows the parent sketch to act as a container to all child sketches. Usually used to continue a **theme**, but experiment with different forms, color, behavior, etc...
+This method allows the parent sketch to act as a container. Usually used to continue a **theme**, but experiment with different forms, color, behavior, etc...
 
-Note: Folders named `sketch/` cannot hold iterations or other folders named `sketch/`, these folders are essentially leaf nodes.
+Note: Folders named `sketch/` cannot hold iterations or other folders named `sketch/`.
 
 ## Templates 
 
-To start off a new sketch with a template use the flag `--template template_name` like so: `sketch --template 3D`.
+A new sketch can be created with a template by using the template flag like so: `sketch --template 3D`.
 
 To list all templates run the command `sketch templates`.
 
@@ -90,9 +90,9 @@ To list all templates run the command `sketch templates`.
 
 [sketchbook_demo_2.webm](https://github.com/user-attachments/assets/ce05dadb-9a61-4e3d-9f10-44bcfe700138)
 
-Sketches can be viewed by running the command `sketch serve` in the root directory of a valid sketchbook.
+Sketches can be viewed by running the command `sketch serve`.
 
-Sketch has a built-in custom file server. This tool comes in handy when trying to come up with new ideas. To obtain a holistic view, open up different sketches and move them around the computer screen. Then sit back and channel the creative forces.
+Tip: This tool comes in handy when trying to come up with new ideas. To obtain a holistic view, open up different sketches and move them around the computer screen. Then sit back and channel the creative forces.
 
 There are two modes available.
 
