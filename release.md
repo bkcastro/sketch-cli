@@ -31,5 +31,4 @@
     + [ ] HTTPS support.
     + [ ] Improve UI.
 + [ ] Remove figlet.
-+ [ ] Update README with new display server feature.
 + [ ] Add the feature of being able to pick which sketch to iterate on like so: `sketch -i 0002`.

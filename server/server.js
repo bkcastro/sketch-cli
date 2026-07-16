@@ -2,11 +2,9 @@ import http from 'http';
 import fs from 'fs';
 import path from 'path';
 import url from 'url';
-import chalk from 'chalk'
-import figlet from 'figlet';
-import Log from '../lib/log.js';
+import Log from '../src/log.js';
 
-import { validSketchbook } from '../lib/files.js';
+import { validSketchbook } from '../src/files.js';
 
 const ROOT_DIR = '.';
 const PORT = 8000;
@@ -37,7 +35,6 @@ var total_sketches = 0;
 function isNumberedFolder(name) {
 	return /^\d+/.test(name);
 }
-
 
 function renderTree(relPath = '') {
        
@@ -109,6 +106,9 @@ function render(file, data) {
 	    return html;
 }
 
+/**
+ * Process http request.
+ */
 const server = http.createServer((req, res) => {
 
 	Log.text(`${req.method} ${req.url}`);
@@ -149,9 +149,8 @@ const server = http.createServer((req, res) => {
 		return;
 	}
 
-
 	// Pares URL
-    	const parsedUrl = url.parse(req.url, true);
+   	const parsedUrl = url.parse(req.url, true);
 
 	// extract URL path
 	// Avoid https://en.wikipedia.org/wiki/Directory_traversal_attack
@@ -159,7 +158,6 @@ const server = http.createServer((req, res) => {
 	// by limiting the path to current directory only
 	const sanitizePath = path.normalize(parsedUrl.pathname).replace(/^(\.\.[\/\\])+/, '');
 	let pathname = path.join(ROOT_DIR, sanitizePath);
-
 
 	fs.exists(pathname, function (exist) {
 		if(!exist) {
@@ -190,7 +188,6 @@ const server = http.createServer((req, res) => {
 	});
 
 });
-
 
 /**
  * Start the server.

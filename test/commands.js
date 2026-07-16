@@ -2,8 +2,8 @@ import { beforeEach, afterEach, before, after, describe, it} from 'node:test';
 import fs from 'fs';
 import { join } from 'path';
 import assert from 'node:assert/strict';
-import Log from '../lib/log.js';
-import { createSketch, newSketch, getValidSketchAndIterationDirectories, listValidSketchDirectories, createName, validSketchbook, initialUser, jsonToString, getUser } from '../lib/files.js';
+import Log from '../src/log.js';
+import { createSketch, newSketch, getValidSketchAndIterationDirectories, listValidSketchDirectories, createName, validSketchbook, initialUser, jsonToString, getUser } from '../src/files.js';
 
 describe('Who:', async (t) => { 
     
