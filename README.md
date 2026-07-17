@@ -10,7 +10,7 @@ A sketch is a simple idea that can be rendered with a browser. This can be anyth
 
 Create a new directory, `cd` into it then run the command `sketch init` to initialize a **sketchbook**.
 
-A **sketchbook** is just a directory that holds sketches.
+A **sketchbook** is a directory that containes sketches.
 
 A simple sketchbook with will look like this:
 
