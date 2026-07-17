@@ -4,7 +4,7 @@ A cli scaffolding tool that helps create art with code.
 
 ## What is a sketch? 
 
-A sketch is a simple idea that can be rendered with a bowser. This can be anything from generative art, UI/UX, images, 3D experiences, etc. It is up to the user to define what they wish to represent. 
+A sketch is a simple idea that can be rendered with a browser. This can be anything from generative art, UI/UX, images, 3D experiences, etc. It is up to the user to define what they wish to represent. 
 
 ## Getting started
 
