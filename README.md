@@ -33,7 +33,7 @@ My_Sketchbook/
 
 ### First sketch
 
-The command `sketch` to create your first sketch. Two folders are created `0001/` and `0001/sketch/`. Folder `0001/sketch/` contains all the files needed to render a sketch, the default is just a blank web page. And folder `0001/` is used to contain future iterations.
+Use command `sketch` to create your first sketch. Two folders are created `0001/` and `0001/sketch/`. Folder `0001/sketch/` contains all the files needed to render a sketch, the default is just a blank web page. And folder `0001/` is used to contain future iterations.
 
 ```
 My_Sketchbook/
