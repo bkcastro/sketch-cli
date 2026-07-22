@@ -4,6 +4,8 @@ import { getTemplateURL } from '../templates/templates.js';
 import { getOptionValue } from './options.js';
 import Log from './log.js';
 
+const REGEX = /^[0-9]{4}$/;
+
 /**
  * Returns the base directory.
  *
@@ -74,7 +76,6 @@ export function createSketch(sketchDir, sourceDir) {
  */
 export function listValidSketchDirectories(dir='./') {
 
-	const REGEX = /^[0-9]{4}$/;
 	const items = fs.readdirSync(dir).filter((str) => REGEX.test(str));
     return items;
 }
@@ -91,6 +92,22 @@ export function getValidSketchAndIterationDirectories() {
     const iterationDir = path.join(items.at(-1) || '', './sketch');
      
     return [ sketchDir, iterationDir];
+}
+
+/**
+ * Return a valid sketch url.
+ *
+ * @return {string}
+ */
+export function createValidSketchURL(sketchDir) {
+    
+    const pathSegments = path.join(process.cwd(), sketchDir).split(path.sep);
+    
+    while (pathSegments.length && !REGEX.test(pathSegments[0])) pathSegments.shift();
+    
+    const URL = path.join('http://localhost:8000', pathSegments.join('/'), '/');
+
+    return URL;
 }
 
 /** 
@@ -121,8 +138,13 @@ export async function newSketch() {
     createSketch(sketchDir, sourceDir);
     
     if (vimMode) {
-        Log.vim(path.join(process.cwd(), sketchDir, '..'));
+        
+        const URL = createValidSketchURL(sketchDir);
+        const absoluteSketchDir = path.join(process.cwd(), sketchDir, '..') 
+        Log.vim(absoluteSketchDir);
+        Log.vim(URL); 
         process.exit(0);
+
     } else {
 
         if (iterate) Log.success(`Sketch iteration created successfully: ${sketchDir}`); 
