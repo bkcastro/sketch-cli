@@ -101,6 +101,7 @@ There are two modes available.
 Reference mode is used to represent a sketchbook with a tree like data-structure.
 
 ### Display 
+<img width="1990" height="1323" alt="SketchbookDisplayServer" src="https://github.com/user-attachments/assets/fdf48808-ecdb-4e2e-9e40-8938b5b05c6e" />
 
 Display mode is used to represent a sketchbook with thumbnail images found inside the folders named `sketch/` **if they exists**. It is up to the user to take a screenshot of their sketch and place it in the directory. Image files that match this regular expression will be used `/^thumbnail\.[jpg|webp|png]{1}$/`. 
 
