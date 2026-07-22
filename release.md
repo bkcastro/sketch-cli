@@ -27,8 +27,13 @@
     + [x] 2D_Hand_Tracking.
     + [ ] WebXR.
 + [x] Add descriptions to templates.
++ [x] Add a --vim flag: changes the log output of the sketch and sketch -i commands so that it can be used by vim plugin script.
++ [x] Create a vim plugin with lua.
++ [ ] Iterations should not copy the thumbnail image.
 + [ ] Refactor server code.
     + [ ] HTTPS support.
     + [ ] Improve UI.
+    + [ ] Dynamic image loading.
 + [ ] Remove figlet.
 + [ ] Add the feature of being able to pick which sketch to iterate on like so: `sketch -i 0002`.
+

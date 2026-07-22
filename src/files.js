@@ -106,19 +106,28 @@ export async function newSketch() {
     const templateName = getOptionValue('template'); 
     const templateDir = getTemplateURL(templateName);
     const sourceDir = iterate && iterationDir || templateDir; 
+    const vimMode = getOptionValue('vim');
 
     if (fs.existsSync(sketchDir)) {
-        return Log.error('Folder ' + sketchDir + ' already exist.');
+        Log.error('Folder ' + sketchDir + ' already exist.');
+        process.exit(1);
     }
 
     if (iterate && !fs.existsSync(sourceDir)) {
-        return Log.error('Folder ' + sourceDir + ' does not exist.');
+        Log.error('Folder ' + sourceDir + ' does not exist.');
+        process.exit(1);
     }
     
     createSketch(sketchDir, sourceDir);
+    
+    if (vimMode) {
+        Log.vim(path.join(process.cwd(), sketchDir, '..'));
+        process.exit(0);
+    } else {
 
-    if (iterate) Log.success(`Sketch iteration created successfully: ${sketchDir}`); 
-    else Log.success(`Sketch create successfully with template ${templateName}: ${sketchDir}`);
+        if (iterate) Log.success(`Sketch iteration created successfully: ${sketchDir}`); 
+        else Log.success(`Sketch create successfully with template ${templateName}: ${sketchDir}`);
+    }
 }
 
 /**

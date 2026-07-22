@@ -7,6 +7,7 @@ import Log from './log.js';
 var optionsState = {
 	'template': 'default',
 	'iterate': false,
+    'vim': false,
 }
 
 /** 
@@ -21,6 +22,10 @@ export const options = {
 		type: 'boolean',
 		short: 'i',
 	},
+    vim: {
+        type: 'boolean',
+        short: 'v',
+    },
 };
 
 /**

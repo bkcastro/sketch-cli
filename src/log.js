@@ -26,7 +26,7 @@ function printSketchbook(user) {
  */
 const Log = {
     success: (str) => console.log('✅ ' + chalk.green(str)),
-    error: (str, err='') => console.log('❌ ' + chalk.red(str)),
+    error: (str, err='') => console.error('❌ ' + chalk.red(str)),
     text: (str) => console.log(str),
     banner: (str) => console.log(chalk.red(str)),
     warning: (str) => console.log(chalk.yellow(str)),
@@ -35,6 +35,7 @@ const Log = {
     invalidSketchbook: () => console.log(chalk.red('This folder is not a valid sketchbook. Use the init command to make one.')),
     help: () => console.log(chalk.white(HELP)),
     templates: () => console.log(chalk.bold(chalk.blue(getListOfTemplates()))),
+    vim: (dir) => console.log(dir),
 }
 
 export default Log;
